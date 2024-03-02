@@ -1,9 +1,15 @@
 body{
     font-family: Arial, sans-serif;
+    background-image: url(fondo.jpg);
+    background-position:top;
+    background-repeat: no-repeat;
+    background-size:auto;
 }
 h1{
     text-align: center;
     margin-top: 50 px;
+    color: rgb(228, 236, 237);
+    font-family:Arial, Helvetica, sans-serif
 }
 
 #guess-input{
@@ -12,7 +18,9 @@ h1{
     padding: 10px;
     font-size: 18px;
     width: 250px;
-    border: 1px solid #ccc;
+    border: 1px solid #080500;
+    background-color:#7b571495;
+    -webkit-text-fill-color:#fff;
 }
 
 #guess-button{
@@ -20,7 +28,7 @@ h1{
     margin: 0 auto;
     padding: 10px 20px ;
     font-size: 18px;
-    background-color: #0CBABA;
+    background-color: #7b5714c3;
     color: #fff;
     border: none;
     border-radius: 3px;

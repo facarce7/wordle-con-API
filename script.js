@@ -2,28 +2,20 @@
 let intentos = 6;
 let diccionario = ['APPLE', 'HURLS', 'WINGS', 'YOUTH']
 
-const palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
+let palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
+
+fetch("https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es")
+.then((response) => response.json())
+.then((response) => {
+  console.log('desde API', response)
+  palabra = response [0].toUpperCase()
+  console.log(palabra)
+})
 
 const BUTTON = document.getElementById("guess-button");
 
 BUTTON.addEventListener("click", intentar);
 console.log(palabra);
-
-function asignarPalabra() {
-    fetch("https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es")
-      .then((respuesta) => respuesta.json())
-      .then((respuesta) => {
-        palabra = respuesta[0]?.toUpperCase();
-        console.log(palabra);
-        if (palabra) {
-          console.log(palabra);
-        } else {
-          console.error("No se pudo obtener la palabra");
-        }
-      })
-      .catch(error => console.error(error));
-  }
-  
 
 function leerIntento(){
     let intento = document.getElementById("guess-input");
@@ -84,14 +76,14 @@ function intentar() {
         SPAN.className = "letter";
         if (INTENTO[i] === palabra[i]) {
             SPAN.innerHTML = INTENTO[i];
-            SPAN.style.backgroundColor = "#79b851";
+            SPAN.style.backgroundColor = "#00bb2d";
         } else if (palabra.includes(INTENTO[i])) {
             SPAN.innerHTML = INTENTO[i];
-            SPAN.style.backgroundColor = "#f3c237";
+            SPAN.style.backgroundColor = "#Ffff00";
 
         } else {
             SPAN.innerHTML = INTENTO[i];
-            SPAN.style.backgroundColor = "#a4aec4";
+            SPAN.style.backgroundColor = "#CCCCCC";
         }
         ROW.appendChild(SPAN);
     }
@@ -101,4 +93,3 @@ function intentar() {
         terminar("<h1>PERDISTE!</h1>")
     }
 }
-
